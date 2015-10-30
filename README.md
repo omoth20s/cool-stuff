@@ -21,7 +21,7 @@ Installation:
 
 Copyright:
 
-	
+	(c) graphic_chess
 
 Credits: 
 
