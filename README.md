@@ -26,5 +26,5 @@ Copyright:
 Credits: 
 
 	Program written by Shane Omoth
-	Picture from http://www.wpclipart.com/recreation/games/chess/chess_set_symbols.png.html 
+	Picture from http://www.wpclipart.com/recreation/games/chess/chess_set_symbols.png.html  
 
