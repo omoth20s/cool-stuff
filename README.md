@@ -7,6 +7,7 @@ Project Description:
 Manifest:
 
   •	Graphic_chess.pde
+  
   •	You will also need to download the picture with all the chess pieces from this website:
   http://www.wpclipart.com/recreation/games/chess/chess_set_symbols.png.html 
 
@@ -14,7 +15,7 @@ Installation:
 
   1.	Download and install processing from http://www.processing.org 
   2.	Save graphic_chess in the processing folder
-  3.	Download chess pieces from http://www.wpclipart.com/recreation/games/chess/chess_set_symbols.png.html the picture should   be 964X288 and saved in the same folder as the graphic_chess.pde file
+  3.	Download chess pieces from http://www.wpclipart.com/recreation/games/chess/chess_set_symbols.png.html the picture 		should   be 964X288 and saved in the same folder as the graphic_chess.pde file
   4.	You should then be able to open the file and run the program
 
 
