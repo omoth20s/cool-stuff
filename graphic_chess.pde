@@ -1,5 +1,10 @@
 //picture from http://www.wpclipart.com/recreation/games/chess/chess_set_symbols.png.html
 //shane omoth october 23 2015
+import processing.serial.*;
+//import static javax.swing.JOptionPane.*;
+
+Serial port = new Serial(this, Serial.list()[0], 9600);  // Create object from Serial class
+
 //declare a class that will be able to contain the coordiantes and size of each space on the board
 class spaces
 {
@@ -67,17 +72,22 @@ boolean whiteTurn = true;
 
 //variable to load in an image from outside the program
 PImage img;
-
+/*
 //function to make the program fullscreen
 boolean sketchFullScreen()
 {
   return true;
 }
-
+*/
 void setup()
 {
   //set window size to the screen size
   size(displayWidth, displayHeight, P2D);
+  //fullScreen();
+
+  //String portName = Serial.list()[0];
+  //Serial myport = new Serial(this, Serial.list()[0], 9600);
+  
   //load in an image for the chess pieces
   img = loadImage("chess_set_symbols.png");
   //find the position and size of each space on the board
@@ -240,11 +250,15 @@ void mousePressed()
           if(mouseX >= space[i][j].spacePosX && mouseX <= space[i][j].spacePosX + space[i][j].spaceWidth &&
           mouseY >= space[i][j].spacePosY && mouseY <= space[i][j].spacePosY + space[i][j].spaceHeight)
           {
-            println("moved");
+            //println("moved");
             //if new space that has been selected is an accepted movement move there
             if(acceptedMovement[i][j])
             {
-              println("moved");
+              int kill = 0;
+              int kingsCastle = 0;
+              if(gameBoard[i][j] > 0)
+                kill = 1;
+              //println("moved");
               //set old space to 0
               gameBoard[currPos.posY][currPos.posX] = 0;
               //check if pawn has reached the other side of the board and if so change it to a queen
@@ -269,12 +283,14 @@ void mousePressed()
                     gameBoard[0][0] = 0;
                     //set bool variable for rook moved to true
                     blackRook1Moved = true;
+                    kingsCastle = 1;
                   }
                   else if(i == 0 && j == 5 && !blackRook2Moved)
                   {
                     gameBoard[i][j-1] = blackRook;
                     gameBoard[0][7] = 0;
                     blackRook2Moved = true;
+                    kingsCastle = 1;
                   }
                 }
                 //set bool variable for king moved to true
@@ -290,12 +306,14 @@ void mousePressed()
                     gameBoard[i][j+1] = whiteRook;
                     gameBoard[7][0] = 0;
                     whiteRook1Moved = true;
+                    kingsCastle = 1;
                   }
                   else if(i == 7 && j == 5 && !whiteRook2Moved)
                   {
                     gameBoard[i][j-1] = whiteRook;
                     gameBoard[7][7] = 0;
                     whiteRook2Moved = true;
+                    kingsCastle = 1;
                   }
                 }
                 whiteKingMoved = true;
@@ -310,14 +328,22 @@ void mousePressed()
               if(whiteTurn)
                 whiteTurn = false;
               else
-                whiteTurn = true;
+                whiteTurn = true; 
+              port.write(currPos.posY);
+              port.write(currPos.posX);
+              port.write(i);
+              port.write(j);
+              port.write(kill);
+              port.write(kingsCastle);
+              println(currPos.posY, ',', currPos.posX, ',', i, ',', j, ',', kill, ',', kingsCastle);
+              //println(currPos.posY, currPos.posX, i, j, kill, kingsCastle);  
               //break;
             }
             //if trying to move to an unaccepted space then exit current move and let the player pick again
             else if(!acceptedMovement[i][j])
             {
               selected = 0;
-              //break;
+              break;
               //background(#E81C1C);
             }
           }
@@ -329,7 +355,16 @@ void mousePressed()
 
 void draw()
 {
-  mousePressed();
+  //port.write('9');
+  mousePressed();/*
+  if (keyPressed == true) 
+  {                           //if we clicked in the window
+   port.write('1');         //send a 1
+   println("1");   
+  } else 
+  {                           //otherwise
+    port.write('0');          //send a 0
+  }*/
   //set background to blue
   background(#0924AA);
   //set stoke weight to make boarders more visible
@@ -539,7 +574,7 @@ void pawnAcceptedMovement(int colors)
       if(currPos.posX + 1 < 8)
         if(gameBoard[currPos.posY - 1][currPos.posX + 1] > 6)
           acceptedMovement[currPos.posY - 1][currPos.posX + 1] = true;
-      if(currPos.posY - 1 >= 0)
+      if(currPos.posY - 1 >= 0 && currPos.posX - 1 >= 0)
         if(gameBoard[currPos.posY - 1][currPos.posX - 1] > 6)
           acceptedMovement[currPos.posY - 1][currPos.posX - 1] = true;
     }
