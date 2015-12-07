@@ -6,10 +6,14 @@ Project Description:
   
 Manifest:
 
-  •	Graphic_chess.pde
+  -	Graphic_chess.pde
   
-  •	You will also need to download the picture with all the chess pieces from this website:
+  -	You will also need to download the picture with all the chess pieces from this website:
   http://www.wpclipart.com/recreation/games/chess/chess_set_symbols.png.html 
+  
+  -	chess.ino
+  
+  -	makeblock XY Plotter
 
 Installation:
 
@@ -17,6 +21,23 @@ Installation:
   2.	Save graphic_chess in the processing folder
   3.	Download chess pieces from http://www.wpclipart.com/recreation/games/chess/chess_set_symbols.png.html the picture 		should   be 964X288 and saved in the same folder as the graphic_chess.pde file
   4.	You should then be able to open the file and run the program
+  5.	download and install the arduino IDE from http://arduino.cc/en/Main/Software
+  6.	download the arduino .ino file
+  7.	then create your circuit with the arduino (for this project I used the this motor shield http://www.robotshop.com/ca/en/dual-stepper-motor-driver-shield-arduino.html However it does not work and overheats to quickly to play a game of chess so only 1 motor can be used at a time currently here is the one I will be trying soon http://www.robotshop.com/ca/en/motor-shield-kit-arduino-v2.html but using this one will require you to use the adafruit libraries so the .ino file will have to be changed) put the shield on top of the arduino hook up the motors to the shield use a 6v battery so you can power an electromagnet connect the battery ground to the ground from the arduino and connect that to the electromagnet connect the power supply to the electromagnet and connect pin 9 on the arduino to the electromagnet
+  8.	create the board:
+  	First buy the track and build it (makeblock XY plotter)
+	Place the electro magnet where the pen should be (I used a grove electromagnet, I also screwed it on to the XY plotter with cardboard underneath it to protect it from short circuiting)
+	The track is attached to a plywood board (with screws) roughly 2ft by 2ft to keep the track in place
+	There are supports screwed in to the ply wood board at each of the four corners on the ply wood and each support is about 5 ¼ inches tall other dimensions for the supports are irrelevant as long as they can support the board and do not interfere with the track
+	The actual board was 1/8 inch thick hard board and again roughly 2ft by 2ft 
+	The board must have a frame to keep it straight (not sinking in the middle due to how thin it is)
+	The frame is 1 inch thick with an 1/8 inch groove in it making the bottom of the 1/8 inch board starting ¾ inches into the frame (this means the board is 6 inches above the plywood base)
+	The hard board must have a chess board drawn on it and for my purposes I made the board 14 inches by 14 inches with the center of the first space being the absolute farthest the track can go in both the x and y directions. Therefore the track cannot actually reach the farthest end of the of the chess board on the left side or on the bottom, I did this so that I can move the track to back to these points when I start a game very easily and I can be sure the track is at the first space.
+  9. plug a computer into the arduino
+  10. upload the .ino code to the arduino
+  11. start up the graphic_chess code 
+  12. play the game on the computer and the pieces will move on the chess board
+
 
 
 Copyright:
@@ -25,6 +46,8 @@ Copyright:
 
 Credits: 
 
-	Program written by Shane Omoth
+	Programs written by Shane Omoth
+	XY plotter made by makeblock
+	electromagnet made by grove
 	Picture from http://www.wpclipart.com/recreation/games/chess/chess_set_symbols.png.html  
 
