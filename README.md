@@ -4,6 +4,8 @@ Project Description:
   
   When the game is opened it should have a blue background with spaces between each space on the board and have all the pieces in the correct positions to start a game of chess. When moving the pieces the players must take turns so white move first then black must move and so on. When moving a piece the game will show green borders around any space that the piece may move to, and if the player clicks on any space without a green border around it the move is cancelled and the player will have to select a piece again. With this program you can play a game of chess on your computer against another player.
   
+  the .ino file will be uploaded to the arduino and after the track and everything has been built the arduino will be able to take commands sent by the .pde code when it is running and will then perform the moves according to the information sent over a serial connection.
+  
 Manifest:
 
   -	Graphic_chess.pde
